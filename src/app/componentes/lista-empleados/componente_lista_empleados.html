@@ -1,0 +1,56 @@
+<div class="card shadow-sm border-0">
+  <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center py-3">
+    <h5 class="mb-0 fw-bold">Nómina de Empleados</h5>
+    <span class="badge bg-light text-primary fw-semibold">{{ empleados.length }} Registros</span>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="table-light">
+          <tr>
+            <th class="ps-3">ID</th>
+            <th>Empleado</th>
+            <th>Estado</th>
+            <th class="text-end pe-3">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let empleado of empleados" [class.table-active]="empleado.id === id_seleccionado" (click)="seleccionar_empleado(empleado)" style="cursor: pointer;">
+            <td class="ps-3 fw-bold text-secondary">#{{ empleado.id }}</td>
+            <td>
+              <div class="fw-semibold text-dark">{{ empleado.nombre }}</div>
+              <small class="text-muted">{{ empleado.cargo }}</small>
+            </td>
+            <td>
+              <span class="badge" [ngClass]="{
+                'bg-success': empleado.estado === 'Activo',
+                'bg-warning text-dark': empleado.estado === 'Vacaciones',
+                'bg-danger': empleado.estado === 'Inactivo'
+              }">
+                {{ empleado.estado }}
+              </span>
+            </td>
+            <td class="text-end pe-3" (click)="$event.stopPropagation()">
+              <div class="btn-group btn-group-sm">
+                <button type="button" class="btn btn-outline-primary" (click)="seleccionar_empleado(empleado)">
+                  Seleccionar
+                </button>
+                <button type="button" class="btn btn-primary" (click)="editar_empleado(empleado)">
+                  Editar
+                </button>
+                <button type="button" class="btn btn-danger" (click)="eliminar_empleado(empleado)">
+                  Eliminar
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr *ngIf="empleados.length === 0">
+            <td colspan="4" class="text-center py-4 text-muted">
+              No hay empleados registrados en la planilla.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

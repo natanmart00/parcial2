@@ -1,0 +1,28 @@
+<div class="container py-4">
+  <div class="mb-4">
+    <button type="button" class="btn btn-outline-primary btn-sm" (click)="volver_a_inicio()">
+      Ir al Inicio
+    </button>
+  </div>
+
+  <div class="card shadow border-0">
+    <div class="card-header bg-primary text-white py-3">
+      <h4 class="mb-0 fw-bold">Detalle de Ejecución de Proceso</h4>
+    </div>
+    <div class="card-body p-4">
+      <div class="alert alert-primary py-3 mb-4" role="alert">
+        <span class="fs-5 fw-bold text-dark">El proceso accedido es el: {{ parametro_proceso }}</span>
+      </div>
+
+      <div class="bg-light p-4 rounded border">
+        <h6 class="fw-bold text-dark mb-2">Parámetros Operativos del Proceso</h6>
+        <p class="text-muted small mb-3">
+          El proceso con identificador <strong>{{ parametro_proceso }}</strong> se encuentra cargado en el entorno de ejecución de nómina.
+        </p>
+        <button type="button" class="btn btn-primary btn-sm" (click)="volver_a_inicio()">
+          Finalizar y Volver al Tablero
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

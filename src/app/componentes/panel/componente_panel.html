@@ -1,0 +1,21 @@
+<div class="container-fluid py-4">
+  <div class="mb-4 pb-2 border-bottom">
+    <h2 class="h3 fw-bold text-dark mb-1">Panel Principal de Planilla</h2>
+    <p class="text-muted mb-0">Gestión de personal y administración de nómina</p>
+  </div>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <app-lista-empleados
+        [empleados]="lista_empleados"
+        (al_seleccionar)="manejar_seleccion($event)"
+      ></app-lista-empleados>
+    </div>
+    <div class="col-lg-5">
+      <app-detalle-empleado
+        [empleado]="empleado_seleccionado"
+        (al_guardar)="manejar_guardado($event)"
+      ></app-detalle-empleado>
+    </div>
+  </div>
+</div>
